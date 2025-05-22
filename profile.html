@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crafty Charms - My Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+    <style>
+        #profile-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f5f5f5;
+            margin-bottom: 15px;
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        .profile-name {
+            margin: 0;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .profile-info-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .profile-info-section h3 {
+            margin-top: 0;
+            color: #555;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .profile-info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile-info-list li {
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .edit-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .edit-button:hover {
+            background: #45a049;
+        }
+
+        .logout-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 12px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .logout-button:hover {
+            background: #d32f2f;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: black;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .save-button {
+            width: 100%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .save-button:hover {
+            background: #45a049;
+        }
+       
+        @media (max-width: 768px) {
+            #header {
+                padding: 15px 20px;
+            }
+            
+            #navbar li {
+                padding: 0 10px;
+            }
+            
+            .profile-container {
+                margin: 30px 15px;
+                padding: 20px;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="img/logo.png" class="logo" alt="Crafty Charms Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a class="active" href="profile.html"><i class="fa-solid fa-user"></i>
+                <li><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-image-container">
+                <div class="profile-image" id="profileImage"></div>
+            </div>
+            <h2 class="profile-name" id="userName">Crafty User</h2>
+        </div>
+
+        <div class="profile-info-section">
+            <h3>Personal Information</h3>
+            <ul class="profile-info-list">
+                <li><strong>Email:</strong> <span id="userEmail">crafty@example.com</span></li>
+                <li><strong>Phone:</strong> <span id="userPhone">123-456-7890</span></li>
+                <li><strong>Member Since:</strong> <span id="memberSince">May 2025</span></li>
+            </ul>
+        </div>
+
+        <button class="edit-button" id="editProfileBtn"><i class="fas fa-edit"></i> Edit Profile</button>
+        <a href="login.html" class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+        <!-- Edit Profile Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="closeModalBtn">&times;</span>
+                <h2>Edit Your Profile</h2>
+                <form id="editProfileForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <button type="submit" class="save-button"><i class="fas fa-save"></i> Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const editModal = document.getElementById('editModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const editProfileForm = document.getElementById('editProfileForm');
+        const userNameDisplay = document.getElementById('userName');
+        const userEmailDisplay = document.getElementById('userEmail');
+        const userPhoneDisplay = document.getElementById('userPhone');
+        const memberSinceDisplay = document.getElementById('memberSince');
+        const profileImageDisplay = document.getElementById('profileImage');
+        const profileIcon = document.getElementById('profile-icon');
+
+        const userData = {
+            name: "craftyuser",
+            email: "crafty@example.com",
+            phone: "987-654-3210",
+            joinDate: "May 2025"
+        };
+
+        function loadProfileData() {
+            userNameDisplay.textContent = userData.name;
+            userEmailDisplay.textContent = userData.email;
+            userPhoneDisplay.textContent = userData.phone;
+            memberSinceDisplay.textContent = userData.joinDate;
+            
+           
+            const initial = userData.name.charAt(0).toUpperCase();
+            profileImageDisplay.textContent = initial;
+            profileIcon.textContent = initial;
+        }
+
+        editProfileBtn.addEventListener('click', () => {
+            document.getElementById('name').value = userData.name;
+            document.getElementById('email').value = userData.email;
+            document.getElementById('phone').value = userData.phone;
+            editModal.style.display = 'block';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            editModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === editModal) {
+                editModal.style.display = 'none';
+            }
+        });
+
+        editProfileForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            userData.name = document.getElementById('name').value;
+            userData.email = document.getElementById('email').value;
+            userData.phone = document.getElementById('phone').value;
+
+            userNameDisplay.textContent = userData.name;
+            userEmailDisplay.textContent = userData.email;
+            userPhoneDisplay.textContent = userData.phone;
+            
+            
+            const initial = userData.name.charAt(0).toUpperCase();
+            profileImageDisplay.textContent = initial;
+            profileIcon.textContent = initial;
+
+            editModal.style.display = 'none';
+        });
+
+        window.addEventListener('DOMContentLoaded', loadProfileData);
+    </script>
+</body>
+</html>
